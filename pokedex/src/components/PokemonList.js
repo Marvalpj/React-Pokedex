@@ -4,7 +4,7 @@ import PokemonCard from './PokemonCard'
 
 export default function PokemonList(props){
 
-    const {pokemons, loadPokemons, isNext} = props
+    const {pokemons, loadPokemons, isNext, rowPokemon} = props
     const loadMore = () => {
         loadPokemons();
       };
@@ -12,7 +12,7 @@ export default function PokemonList(props){
     return (
         <FlatList
             data = {pokemons}
-            numColumns={2}
+            numColumns={rowPokemon || 2}
             showsVerticalScrollIndicator={false}
             keyExtractor={ (pokemon) => String(pokemon.id)}
             renderItem={ ({item}) => <PokemonCard pokemon={item}/>}
