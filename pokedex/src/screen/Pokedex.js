@@ -11,21 +11,20 @@ export default function Pokedex(){
     const [nextUrl, setnextUrl] = useState(null)
 
     useEffect(() => {
-        (async () =>{
-            await loadPokemons()
-        })()
-    }, [])
+        (async () => {
+          await loadPokemons();
+        })();
+      }, []);
 
     const loadPokemons = async () => {
         try 
         {
             const response = await getPokemonsApi(nextUrl)
-            setnextUrl(response.next)
 
-            const pokemonArray = await Promise.all(
-                response.results.map( async (pokemon) =>{
+            const pokemonsArray = await Promise.all(
+                response.results.map( async (pokemon) => {
                     const pokemonDetail = await getPokemonDetailsByUrlApi(pokemon.url)
-
+                    
                     return {
                         id: pokemonDetail.id,
                         name : pokemonDetail.name,
@@ -37,7 +36,8 @@ export default function Pokedex(){
                 })
             )
 
-            setPokemons([...pokemons, ...pokemonArray])
+            setPokemons([...pokemons, ...pokemonsArray])
+            setnextUrl(response.next)
         } 
         catch (error) {
             console.error(error)    
@@ -46,7 +46,7 @@ export default function Pokedex(){
 
     return(
         <SafeAreaView>
-            <PokemonList pokemons= {pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
-        </SafeAreaView>
+            <PokemonList pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
+      </SafeAreaView>
     )
 }
