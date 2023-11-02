@@ -47,3 +47,12 @@ export async function RemovePokemonFavoriteApi(id){
     }
 }
 
+export async function RemovePokemonsFavoriteApi(){
+    try {
+        await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify([]))
+    } catch (error) {
+        throw error
+    }
+}
+
+

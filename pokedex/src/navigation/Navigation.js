@@ -11,13 +11,13 @@ const Tab = createBottomTabNavigator()
 export default function Navigation(){
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Favoritos" component={FavoriteNavigation} options={{
-                tabBarLabel: "Equipo",
-                tabBarIcon: () => renderTeamPokemon() 
-            }} />
             <Tab.Screen name="Pokedex" component={PokedexNavigation}  options={{
                 tabBarLabel: "",
                 tabBarIcon: () => renderPokeball()
+            }} />
+            <Tab.Screen name="Favoritos" component={FavoriteNavigation} options={{
+                tabBarLabel: "Equipo",
+                tabBarIcon: () => renderTeamPokemon() 
             }} />
            
         </Tab.Navigator>

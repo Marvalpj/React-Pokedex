@@ -6,6 +6,7 @@ import Header from '../components/Pokemon/Header'
 import Type from '../components/Pokemon/Type'
 import Stats from '../components/Pokemon/Stats'
 import Favorite from '../components/Pokemon/Favorite'
+import PokemonInfoTab from '../components/Pokemon/PokemonInfoTab'
 export default function Pokemon(props){
 
     const {
@@ -51,7 +52,8 @@ export default function Pokemon(props){
                 image={pokemon.sprites.front_default} 
                 type= {pokemon.types[0].type.name} />
         <Type types ={pokemon.types} />
-        <Stats stats={pokemon.stats} />
+        {/* <Stats stats={pokemon.stats} /> */}
+        <PokemonInfoTab pokemon = {pokemon} />
         </ScrollView>
     )
 }
